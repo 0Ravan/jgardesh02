@@ -7,6 +7,17 @@
   </head>
   <body>
     <div id="root"></div>
+    <div id="loading-error" style="display:none; color:red; padding:20px; font-family:sans-serif;">
+      <h2>⚠️ خطا در بارگذاری برنامه</h2>
+      <pre id="error-msg"></pre>
+      <p>لطفاً صفحه را رفرش کنید (Ctrl+F5). اگر مشکل حل نشد، این پیام را برای پشتیبانی بفرستید.</p>
+    </div>
+    <script>
+      window.onerror = function(msg, url, line, col, error) {
+        document.getElementById('loading-error').style.display = 'block';
+        document.getElementById('error-msg').innerText = msg + '\n' + url + ':' + line;
+      };
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
